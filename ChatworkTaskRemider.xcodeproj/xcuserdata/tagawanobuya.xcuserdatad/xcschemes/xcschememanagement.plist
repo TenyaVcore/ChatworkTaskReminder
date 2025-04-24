@@ -7,7 +7,25 @@
 		<key>ChatworkTaskRemider.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>ChatworkTaskWidgetExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>BAD078E42DB89E1400B2C1E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BAD079152DB8B5D900B2C1E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

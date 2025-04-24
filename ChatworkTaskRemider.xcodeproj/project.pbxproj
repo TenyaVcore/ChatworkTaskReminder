@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BAD079192DB8B5D900B2C1E8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD079182DB8B5D900B2C1E8 /* WidgetKit.framework */; };
+		BAD0791B2DB8B5D900B2C1E8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD0791A2DB8B5D900B2C1E8 /* SwiftUI.framework */; };
+		BAD0792C2DB8B5DB00B2C1E8 /* ChatworkTaskWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BAD079162DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		BAD078F62DB89E1800B2C1E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +27,47 @@
 			remoteGlobalIDString = BAD078E42DB89E1400B2C1E8;
 			remoteInfo = ChatworkTaskRemider;
 		};
+		BAD0792A2DB8B5DB00B2C1E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAD078DD2DB89E1400B2C1E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BAD079152DB8B5D900B2C1E8;
+			remoteInfo = ChatworkTaskWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BAD079312DB8B5DB00B2C1E8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BAD0792C2DB8B5DB00B2C1E8 /* ChatworkTaskWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BAD078E52DB89E1400B2C1E8 /* ChatworkTaskRemider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatworkTaskRemider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD078F52DB89E1800B2C1E8 /* ChatworkTaskRemiderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatworkTaskRemiderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatworkTaskRemiderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAD079162DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChatworkTaskWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAD079182DB8B5D900B2C1E8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		BAD0791A2DB8B5D900B2C1E8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BAD0792D2DB8B5DB00B2C1E8 /* Exceptions for "ChatworkTaskWidget" folder in "ChatworkTaskWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BAD078E72DB89E1400B2C1E8 /* ChatworkTaskRemider */ = {
@@ -43,6 +83,14 @@
 		BAD079022DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ChatworkTaskRemiderUITests;
+			sourceTree = "<group>";
+		};
+		BAD0791C2DB8B5D900B2C1E8 /* ChatworkTaskWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BAD0792D2DB8B5DB00B2C1E8 /* Exceptions for "ChatworkTaskWidget" folder in "ChatworkTaskWidgetExtension" target */,
+			);
+			path = ChatworkTaskWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +117,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BAD079132DB8B5D900B2C1E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAD0791B2DB8B5D900B2C1E8 /* SwiftUI.framework in Frameworks */,
+				BAD079192DB8B5D900B2C1E8 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +135,8 @@
 				BAD078E72DB89E1400B2C1E8 /* ChatworkTaskRemider */,
 				BAD078F82DB89E1800B2C1E8 /* ChatworkTaskRemiderTests */,
 				BAD079022DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests */,
+				BAD0791C2DB8B5D900B2C1E8 /* ChatworkTaskWidget */,
+				BAD079172DB8B5D900B2C1E8 /* Frameworks */,
 				BAD078E62DB89E1400B2C1E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +147,18 @@
 				BAD078E52DB89E1400B2C1E8 /* ChatworkTaskRemider.app */,
 				BAD078F52DB89E1800B2C1E8 /* ChatworkTaskRemiderTests.xctest */,
 				BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests.xctest */,
+				BAD079162DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BAD079172DB8B5D900B2C1E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAD079182DB8B5D900B2C1E8 /* WidgetKit.framework */,
+				BAD0791A2DB8B5D900B2C1E8 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +171,12 @@
 				BAD078E12DB89E1400B2C1E8 /* Sources */,
 				BAD078E22DB89E1400B2C1E8 /* Frameworks */,
 				BAD078E32DB89E1400B2C1E8 /* Resources */,
+				BAD079312DB8B5DB00B2C1E8 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BAD0792B2DB8B5DB00B2C1E8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				BAD078E72DB89E1400B2C1E8 /* ChatworkTaskRemider */,
@@ -163,6 +234,28 @@
 			productReference = BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAD0792E2DB8B5DB00B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskWidgetExtension" */;
+			buildPhases = (
+				BAD079122DB8B5D900B2C1E8 /* Sources */,
+				BAD079132DB8B5D900B2C1E8 /* Frameworks */,
+				BAD079142DB8B5D900B2C1E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BAD0791C2DB8B5D900B2C1E8 /* ChatworkTaskWidget */,
+			);
+			name = ChatworkTaskWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = ChatworkTaskWidgetExtension;
+			productReference = BAD079162DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +277,9 @@
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = BAD078E42DB89E1400B2C1E8;
 					};
+					BAD079152DB8B5D900B2C1E8 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 				};
 			};
 			buildConfigurationList = BAD078E02DB89E1400B2C1E8 /* Build configuration list for PBXProject "ChatworkTaskRemider" */;
@@ -203,6 +299,7 @@
 				BAD078E42DB89E1400B2C1E8 /* ChatworkTaskRemider */,
 				BAD078F42DB89E1800B2C1E8 /* ChatworkTaskRemiderTests */,
 				BAD078FE2DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests */,
+				BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +320,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BAD078FD2DB89E1800B2C1E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAD079142DB8B5D900B2C1E8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +357,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BAD079122DB8B5D900B2C1E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +376,11 @@
 			isa = PBXTargetDependency;
 			target = BAD078E42DB89E1400B2C1E8 /* ChatworkTaskRemider */;
 			targetProxy = BAD079002DB89E1800B2C1E8 /* PBXContainerItemProxy */;
+		};
+		BAD0792B2DB8B5DB00B2C1E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */;
+			targetProxy = BAD0792A2DB8B5DB00B2C1E8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -518,6 +634,60 @@
 			};
 			name = Release;
 		};
+		BAD0792F2DB8B5DB00B2C1E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P4P28KTQQK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChatworkTaskWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ChatworkTaskWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskRemider.ChatworkTaskWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BAD079302DB8B5DB00B2C1E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P4P28KTQQK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChatworkTaskWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ChatworkTaskWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskRemider.ChatworkTaskWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -553,6 +723,15 @@
 			buildConfigurations = (
 				BAD079102DB89E1800B2C1E8 /* Debug */,
 				BAD079112DB89E1800B2C1E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAD0792E2DB8B5DB00B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAD0792F2DB8B5DB00B2C1E8 /* Debug */,
+				BAD079302DB8B5DB00B2C1E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
