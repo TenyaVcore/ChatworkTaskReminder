@@ -7,87 +7,101 @@
 
 import WidgetKit
 import SwiftUI
-
-struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
-    }
-
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
-    }
-
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        return Timeline(entries: entries, policy: .atEnd)
-    }
-}
-
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationAppIntent
-}
-
-struct ChatworkTaskWidgetEntryView : View {
-    var entry: Provider.Entry
-
-
-    var body: some View {
-        VStack {
-            TaskWidgetCell(taskName: "task1")
-            TaskWidgetCell(taskName: "task2")
-            TaskWidgetCell(taskName: "task3")
-        }
-    }
-}
+import AppIntents
 
 struct ChatworkTaskWidget: Widget {
-    let kind: String = "ChatworkTaskWidget"
-
+    let kind: String = "TaskWidget"
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            ChatworkTaskWidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            TaskWidgetEntryView(entry: entry)
+        }
+        .configurationDisplayName("Task Widget")
+        .description("interactive widget.")
+    }
+}
+
+struct TaskWidgetEntryView : View {
+    var entry: Provider.Entry
+    var body: some View {
+        HStack {
+            VStack {
+                Button(intent: reloadIntent()) {
+                    Image(systemName: "arrow.clockwise.circle.fill")
+                }
+
+                Button(intent: cancelIntent()) {
+                    Image(systemName: "arrowshape.turn.up.backward.circle.fill")
+                }
+            }
+            VStack {
+                ForEach(entry.taskList) { task in
+                    TaskWidgetCell(task: task)
+                }
+            }
         }
     }
 }
 
 struct TaskWidgetCell: View {
-    let taskName: String
+    let task: TaskEntity
     @State private var isChecked: Bool = false
     var body: some View {
-        Button(intent: CompleteTaskIntent()) {
+        Button(intent: TaskIntent(taskId: task.taskId, roomId: task.roomId)) {
             HStack {
-                Text(taskName)
+                Text(task.content)
+                    .lineLimit(1)
+                    .font(.caption)
                 Spacer()
                 Image(systemName: isChecked ? "checkmark.square.fill" : "square")
                     .resizable()
                     .frame(width: 24, height: 24)
             }
             .foregroundColor(.primary)
+            .frame(maxWidth: .infinity)
+            .containerBackground(.fill.tertiary, for: .widget)
         }
     }
 }
 
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
+struct TaskEntry: TimelineEntry {
+    let date: Date = .now
+    let taskList: [TaskEntity]
+}
+
+struct Provider: TimelineProvider {
+    let client = ChatworkAPIClient(
+        apiKey: "38e3989ad77553c8cbca68f6f20e5ff4"
+    )
+    func placeholder(in context: Context) -> TaskEntry {
+        TaskEntry(taskList: [])
+    }
+
+    func getSnapshot(in context: Context, completion: @escaping (TaskEntry) -> ()) {
+        // TODO: fetch data from local
+        let entry = TaskEntry(taskList: [])
+        completion(entry)
+    }
+
+    func getTimeline(in context: Context, completion: @escaping (Timeline<TaskEntry>) -> ()) {
+        _Concurrency.Task {
+            do {
+                let result = try await client.getMyTasks()
+                // TODO: save data to local
+                print(result)
+                let taskList = result.map { task in
+                    TaskEntity(
+                        taskId: task.taskID,
+                        roomId: task.room.roomID,
+                        content: task.body
+                    )
+                }
+                let latestEntries = [TaskEntry(taskList: taskList)]
+                let timeline = Timeline(entries: latestEntries, policy: .atEnd)
+                completion(timeline)
+            } catch {
+                print("error\(error)")
+            }
+        }
     }
 }
 
-#Preview(as: .systemSmall) {
-    ChatworkTaskWidget()
-} timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-}

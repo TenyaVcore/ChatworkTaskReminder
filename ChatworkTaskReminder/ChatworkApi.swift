@@ -1,64 +1,75 @@
 //
-//  Untitled.swift
+//  ChatworkApi.swift
 //  ChatworkTaskRemider
 //
-//  Created by Tagawa Nobuya on 2025/04/24.
+//  Created by Tagawa Nobuya on 2025/04/25.
 //
 
 import Foundation
 
 // MARK: - データモデル
-
-// タスク情報
-struct Task: Codable, Identifiable {
-    let id: Int // task_id を id として使うため Identifiable に適合
-    let roomId: Int
-    let account: Account
+struct ChatworkTask: Decodable {
+    let taskID: Int
+    let room: Room
     let assignedByAccount: Account
-    let messageId: String // メッセージIDは数値だが非常に大きくなる可能性があるのでStringが安全
+    let messageID: String
     let body: String
-    let limitTime: Int // Unix time
+    let limitTime: TimeInterval
     let status: TaskStatus
-    let limitType: String // 'none', 'date', 'time'
+    let limitType: LimitType
 
     enum CodingKeys: String, CodingKey {
-        case id = "task_id" // APIのキー名をSwiftのプロパティ名にマッピング
-        case roomId = "room_id"
-        case account
-        case assignedByAccount = "assigned_by_account"
-        case messageId = "message_id"
-        case body
-        case limitTime = "limit_time"
-        case status
-        case limitType = "limit_type"
-    }
+            case taskID  = "task_id"
+            case room
+            case assignedByAccount = "assigned_by_account"
+            case messageID = "message_id"
+            case body
+            case limitTime = "limit_time"
+            case status
+            case limitType = "limit_type"
+        }
 }
 
-// アカウント情報 (Task内で使用)
-struct Account: Codable {
-    let accountId: Int
+struct Room: Decodable {
+    let roomID: Int
     let name: String
-    let avatarImageUrl: URL // URL型としてデコード
+    let iconPath: URL
 
     enum CodingKeys: String, CodingKey {
-        case accountId = "account_id"
+        case roomID  = "room_id"
         case name
-        case avatarImageUrl = "avatar_image_url"
+        case iconPath = "icon_path"
     }
 }
 
-// タスク状態 (Codableに準拠したEnum)
-enum TaskStatus: String, Codable {
+struct Account: Decodable {
+    let accountID: Int
+    let name: String
+    let avatarImageURL: URL
+
+    enum CodingKeys: String, CodingKey {
+        case accountID  = "account_id"
+        case name
+        case avatarImageURL = "avatar_image_url"
+    }
+}
+
+enum TaskStatus: String, Decodable {
     case open
     case done
 }
 
+enum LimitType: String, Decodable {
+    case date
+    case none
+}
+
 // タスク状態更新APIのレスポンス
-struct UpdateTaskStatusResponse: Codable {
-    let taskId: String // ドキュメントではstringだが、実際は数値かも？確認必要。デコード時にエラーになる場合はIntにする。
+public struct UpdateTaskStatusResponse: Codable {
+    let taskId: String
 
     enum CodingKeys: String, CodingKey {
-        case taskId = "task_id" // APIドキュメントでは 'task_ids' と複数形だが、単一更新なので単数形のはず？ 要確認
+        case taskId = "task_id"
     }
 }
 

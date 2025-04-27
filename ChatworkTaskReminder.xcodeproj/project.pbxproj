@@ -51,15 +51,32 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BAD078E52DB89E1400B2C1E8 /* ChatworkTaskRemider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatworkTaskRemider.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BAD078F52DB89E1800B2C1E8 /* ChatworkTaskRemiderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatworkTaskRemiderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatworkTaskRemiderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAD078E52DB89E1400B2C1E8 /* ChatworkTaskReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatworkTaskReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAD078F52DB89E1800B2C1E8 /* ChatworkTaskReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatworkTaskReminderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatworkTaskReminderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD079162DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChatworkTaskWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD079182DB8B5D900B2C1E8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		BAD0791A2DB8B5D900B2C1E8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BACBBA992DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskReminder" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ChatworkApi.swift,
+				ChatworkApiClient.swift,
+			);
+			target = BAD078E42DB89E1400B2C1E8 /* ChatworkTaskReminder */;
+		};
+		BACBBA9A2DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ChatworkApi.swift,
+				ChatworkApiClient.swift,
+				TaskEntity.swift,
+			);
+			target = BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */;
+		};
 		BAD0792D2DB8B5DB00B2C1E8 /* Exceptions for "ChatworkTaskWidget" folder in "ChatworkTaskWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -70,9 +87,13 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BAD078E72DB89E1400B2C1E8 /* ChatworkTaskRemider */ = {
+		BAD078E72DB89E1400B2C1E8 /* ChatworkTaskReminder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ChatworkTaskRemider;
+			exceptions = (
+				BACBBA992DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskReminder" target */,
+				BACBBA9A2DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskWidgetExtension" target */,
+			);
+			path = ChatworkTaskReminder;
 			sourceTree = "<group>";
 		};
 		BAD078F82DB89E1800B2C1E8 /* ChatworkTaskRemiderTests */ = {
@@ -132,7 +153,7 @@
 		BAD078DC2DB89E1400B2C1E8 = {
 			isa = PBXGroup;
 			children = (
-				BAD078E72DB89E1400B2C1E8 /* ChatworkTaskRemider */,
+				BAD078E72DB89E1400B2C1E8 /* ChatworkTaskReminder */,
 				BAD078F82DB89E1800B2C1E8 /* ChatworkTaskRemiderTests */,
 				BAD079022DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests */,
 				BAD0791C2DB8B5D900B2C1E8 /* ChatworkTaskWidget */,
@@ -144,9 +165,9 @@
 		BAD078E62DB89E1400B2C1E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BAD078E52DB89E1400B2C1E8 /* ChatworkTaskRemider.app */,
-				BAD078F52DB89E1800B2C1E8 /* ChatworkTaskRemiderTests.xctest */,
-				BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests.xctest */,
+				BAD078E52DB89E1400B2C1E8 /* ChatworkTaskReminder.app */,
+				BAD078F52DB89E1800B2C1E8 /* ChatworkTaskReminderTests.xctest */,
+				BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskReminderUITests.xctest */,
 				BAD079162DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension.appex */,
 			);
 			name = Products;
@@ -164,9 +185,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BAD078E42DB89E1400B2C1E8 /* ChatworkTaskRemider */ = {
+		BAD078E42DB89E1400B2C1E8 /* ChatworkTaskReminder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BAD079092DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskRemider" */;
+			buildConfigurationList = BAD079092DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskReminder" */;
 			buildPhases = (
 				BAD078E12DB89E1400B2C1E8 /* Sources */,
 				BAD078E22DB89E1400B2C1E8 /* Frameworks */,
@@ -179,18 +200,18 @@
 				BAD0792B2DB8B5DB00B2C1E8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				BAD078E72DB89E1400B2C1E8 /* ChatworkTaskRemider */,
+				BAD078E72DB89E1400B2C1E8 /* ChatworkTaskReminder */,
 			);
-			name = ChatworkTaskRemider;
+			name = ChatworkTaskReminder;
 			packageProductDependencies = (
 			);
 			productName = ChatworkTaskRemider;
-			productReference = BAD078E52DB89E1400B2C1E8 /* ChatworkTaskRemider.app */;
+			productReference = BAD078E52DB89E1400B2C1E8 /* ChatworkTaskReminder.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BAD078F42DB89E1800B2C1E8 /* ChatworkTaskRemiderTests */ = {
+		BAD078F42DB89E1800B2C1E8 /* ChatworkTaskReminderTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BAD0790C2DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskRemiderTests" */;
+			buildConfigurationList = BAD0790C2DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskReminderTests" */;
 			buildPhases = (
 				BAD078F12DB89E1800B2C1E8 /* Sources */,
 				BAD078F22DB89E1800B2C1E8 /* Frameworks */,
@@ -204,16 +225,16 @@
 			fileSystemSynchronizedGroups = (
 				BAD078F82DB89E1800B2C1E8 /* ChatworkTaskRemiderTests */,
 			);
-			name = ChatworkTaskRemiderTests;
+			name = ChatworkTaskReminderTests;
 			packageProductDependencies = (
 			);
 			productName = ChatworkTaskRemiderTests;
-			productReference = BAD078F52DB89E1800B2C1E8 /* ChatworkTaskRemiderTests.xctest */;
+			productReference = BAD078F52DB89E1800B2C1E8 /* ChatworkTaskReminderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BAD078FE2DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests */ = {
+		BAD078FE2DB89E1800B2C1E8 /* ChatworkTaskReminderUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BAD0790F2DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskRemiderUITests" */;
+			buildConfigurationList = BAD0790F2DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskReminderUITests" */;
 			buildPhases = (
 				BAD078FB2DB89E1800B2C1E8 /* Sources */,
 				BAD078FC2DB89E1800B2C1E8 /* Frameworks */,
@@ -227,11 +248,11 @@
 			fileSystemSynchronizedGroups = (
 				BAD079022DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests */,
 			);
-			name = ChatworkTaskRemiderUITests;
+			name = ChatworkTaskReminderUITests;
 			packageProductDependencies = (
 			);
 			productName = ChatworkTaskRemiderUITests;
-			productReference = BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests.xctest */;
+			productReference = BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskReminderUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */ = {
@@ -282,7 +303,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BAD078E02DB89E1400B2C1E8 /* Build configuration list for PBXProject "ChatworkTaskRemider" */;
+			buildConfigurationList = BAD078E02DB89E1400B2C1E8 /* Build configuration list for PBXProject "ChatworkTaskReminder" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -296,9 +317,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BAD078E42DB89E1400B2C1E8 /* ChatworkTaskRemider */,
-				BAD078F42DB89E1800B2C1E8 /* ChatworkTaskRemiderTests */,
-				BAD078FE2DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests */,
+				BAD078E42DB89E1400B2C1E8 /* ChatworkTaskReminder */,
+				BAD078F42DB89E1800B2C1E8 /* ChatworkTaskReminderTests */,
+				BAD078FE2DB89E1800B2C1E8 /* ChatworkTaskReminderUITests */,
 				BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */,
 			);
 		};
@@ -369,12 +390,12 @@
 /* Begin PBXTargetDependency section */
 		BAD078F72DB89E1800B2C1E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BAD078E42DB89E1400B2C1E8 /* ChatworkTaskRemider */;
+			target = BAD078E42DB89E1400B2C1E8 /* ChatworkTaskReminder */;
 			targetProxy = BAD078F62DB89E1800B2C1E8 /* PBXContainerItemProxy */;
 		};
 		BAD079012DB89E1800B2C1E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BAD078E42DB89E1400B2C1E8 /* ChatworkTaskRemider */;
+			target = BAD078E42DB89E1400B2C1E8 /* ChatworkTaskReminder */;
 			targetProxy = BAD079002DB89E1800B2C1E8 /* PBXContainerItemProxy */;
 		};
 		BAD0792B2DB8B5DB00B2C1E8 /* PBXTargetDependency */ = {
@@ -577,7 +598,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatworkTaskRemider.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatworkTaskRemider";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatworkTaskReminder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatworkTaskReminder";
 			};
 			name = Debug;
 		};
@@ -596,7 +617,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatworkTaskRemider.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatworkTaskRemider";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatworkTaskReminder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChatworkTaskReminder";
 			};
 			name = Release;
 		};
@@ -691,7 +712,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BAD078E02DB89E1400B2C1E8 /* Build configuration list for PBXProject "ChatworkTaskRemider" */ = {
+		BAD078E02DB89E1400B2C1E8 /* Build configuration list for PBXProject "ChatworkTaskReminder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAD079072DB89E1800B2C1E8 /* Debug */,
@@ -700,7 +721,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAD079092DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskRemider" */ = {
+		BAD079092DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskReminder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAD0790A2DB89E1800B2C1E8 /* Debug */,
@@ -709,7 +730,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAD0790C2DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskRemiderTests" */ = {
+		BAD0790C2DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskReminderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAD0790D2DB89E1800B2C1E8 /* Debug */,
@@ -718,7 +739,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAD0790F2DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskRemiderUITests" */ = {
+		BAD0790F2DB89E1800B2C1E8 /* Build configuration list for PBXNativeTarget "ChatworkTaskReminderUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAD079102DB89E1800B2C1E8 /* Debug */,

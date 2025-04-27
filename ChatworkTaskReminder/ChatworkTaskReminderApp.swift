@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct ChatworkTaskRemiderApp: App {
+struct ChatworkTaskReminderApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

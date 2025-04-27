@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BAD078E42DB89E1400B2C1E8"
-               BuildableName = "ChatworkTaskRemider.app"
-               BlueprintName = "ChatworkTaskRemider"
-               ReferencedContainer = "container:ChatworkTaskRemider.xcodeproj">
+               BuildableName = "ChatworkTaskReminder.app"
+               BlueprintName = "ChatworkTaskReminder"
+               ReferencedContainer = "container:ChatworkTaskReminder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAD078E42DB89E1400B2C1E8"
-            BuildableName = "ChatworkTaskRemider.app"
-            BlueprintName = "ChatworkTaskRemider"
-            ReferencedContainer = "container:ChatworkTaskRemider.xcodeproj">
+            BuildableName = "ChatworkTaskReminder.app"
+            BlueprintName = "ChatworkTaskReminder"
+            ReferencedContainer = "container:ChatworkTaskReminder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAD078E42DB89E1400B2C1E8"
-            BuildableName = "ChatworkTaskRemider.app"
-            BlueprintName = "ChatworkTaskRemider"
-            ReferencedContainer = "container:ChatworkTaskRemider.xcodeproj">
+            BuildableName = "ChatworkTaskReminder.app"
+            BlueprintName = "ChatworkTaskReminder"
+            ReferencedContainer = "container:ChatworkTaskReminder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

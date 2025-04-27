@@ -12,7 +12,6 @@ import SwiftUI
 struct ChatworkTaskWidgetBundle: WidgetBundle {
     var body: some Widget {
         ChatworkTaskWidget()
-        ChatworkTaskWidgetControl()
-        // ChatworkTaskWidgetLiveActivity()
+        // ChatworkTaskWidgetControl()
     }
 }

@@ -19,7 +19,7 @@
                BlueprintIdentifier = "BAD079152DB8B5D900B2C1E8"
                BuildableName = "ChatworkTaskWidgetExtension.appex"
                BlueprintName = "ChatworkTaskWidgetExtension"
-               ReferencedContainer = "container:ChatworkTaskRemider.xcodeproj">
+               ReferencedContainer = "container:ChatworkTaskReminder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,9 +31,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BAD078E42DB89E1400B2C1E8"
-               BuildableName = "ChatworkTaskRemider.app"
-               BlueprintName = "ChatworkTaskRemider"
-               ReferencedContainer = "container:ChatworkTaskRemider.xcodeproj">
+               BuildableName = "ChatworkTaskReminder.app"
+               BlueprintName = "ChatworkTaskReminder"
+               ReferencedContainer = "container:ChatworkTaskReminder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -74,16 +74,16 @@
             BlueprintIdentifier = "BAD079152DB8B5D900B2C1E8"
             BuildableName = "ChatworkTaskWidgetExtension.appex"
             BlueprintName = "ChatworkTaskWidgetExtension"
-            ReferencedContainer = "container:ChatworkTaskRemider.xcodeproj">
+            ReferencedContainer = "container:ChatworkTaskReminder.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAD078E42DB89E1400B2C1E8"
-            BuildableName = "ChatworkTaskRemider.app"
-            BlueprintName = "ChatworkTaskRemider"
-            ReferencedContainer = "container:ChatworkTaskRemider.xcodeproj">
+            BuildableName = "ChatworkTaskReminder.app"
+            BlueprintName = "ChatworkTaskReminder"
+            ReferencedContainer = "container:ChatworkTaskReminder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <EnvironmentVariables>
@@ -117,9 +117,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BAD078E42DB89E1400B2C1E8"
-            BuildableName = "ChatworkTaskRemider.app"
-            BlueprintName = "ChatworkTaskRemider"
-            ReferencedContainer = "container:ChatworkTaskRemider.xcodeproj">
+            BuildableName = "ChatworkTaskReminder.app"
+            BlueprintName = "ChatworkTaskReminder"
+            ReferencedContainer = "container:ChatworkTaskReminder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
