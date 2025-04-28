@@ -60,20 +60,12 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BACBBA992DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskReminder" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				ChatworkApi.swift,
-				ChatworkApiClient.swift,
-			);
-			target = BAD078E42DB89E1400B2C1E8 /* ChatworkTaskReminder */;
-		};
 		BACBBA9A2DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				ChatworkApi.swift,
 				ChatworkApiClient.swift,
-				TaskEntity.swift,
+				ChatworkTask.swift,
 			);
 			target = BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */;
 		};
@@ -90,7 +82,6 @@
 		BAD078E72DB89E1400B2C1E8 /* ChatworkTaskReminder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				BACBBA992DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskReminder" target */,
 				BACBBA9A2DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskWidgetExtension" target */,
 			);
 			path = ChatworkTaskReminder;
@@ -532,7 +523,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ChatworkTaskRemider/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ChatworkTaskReminder/Preview Content\"";
 				DEVELOPMENT_TEAM = P4P28KTQQK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -561,7 +552,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ChatworkTaskRemider/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ChatworkTaskReminder/Preview Content\"";
 				DEVELOPMENT_TEAM = P4P28KTQQK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

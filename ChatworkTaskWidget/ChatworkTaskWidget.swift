@@ -21,6 +21,20 @@ struct ChatworkTaskWidget: Widget {
 }
 
 struct TaskWidgetEntryView : View {
+    @Environment(\.widgetFamily) var family: WidgetFamily
+
+    private var limit: Int {
+            switch family {
+            case .systemSmall:        3
+            case .systemMedium:       3
+            case .systemLarge:        7
+            case .systemExtraLarge:  9
+            case .accessoryCircular,
+                 .accessoryRectangular,
+                 .accessoryInline:    1
+            @unknown default:         1
+            }
+        }
     var entry: Provider.Entry
     var body: some View {
         HStack {
@@ -34,7 +48,7 @@ struct TaskWidgetEntryView : View {
                 }
             }
             VStack {
-                ForEach(entry.taskList) { task in
+                ForEach(entry.taskList.prefix(limit)) { task in
                     TaskWidgetCell(task: task)
                 }
             }
@@ -43,12 +57,12 @@ struct TaskWidgetEntryView : View {
 }
 
 struct TaskWidgetCell: View {
-    let task: TaskEntity
+    let task: ChatworkTask
     @State private var isChecked: Bool = false
     var body: some View {
-        Button(intent: TaskIntent(taskId: task.taskId, roomId: task.roomId)) {
+        Button(intent: TaskIntent(taskId: task.taskID, roomId: task.room.roomID)) {
             HStack {
-                Text(task.content)
+                Text(task.body)
                     .lineLimit(1)
                     .font(.caption)
                 Spacer()
@@ -65,7 +79,7 @@ struct TaskWidgetCell: View {
 
 struct TaskEntry: TimelineEntry {
     let date: Date = .now
-    let taskList: [TaskEntity]
+    let taskList: [ChatworkTask]
 }
 
 struct Provider: TimelineProvider {
@@ -83,19 +97,12 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<TaskEntry>) -> ()) {
-        _Concurrency.Task {
+        Task {
             do {
                 let result = try await client.getMyTasks()
                 // TODO: save data to local
                 print(result)
-                let taskList = result.map { task in
-                    TaskEntity(
-                        taskId: task.taskID,
-                        roomId: task.room.roomID,
-                        content: task.body
-                    )
-                }
-                let latestEntries = [TaskEntry(taskList: taskList)]
+                let latestEntries = [TaskEntry(taskList: result)]
                 let timeline = Timeline(entries: latestEntries, policy: .atEnd)
                 completion(timeline)
             } catch {
