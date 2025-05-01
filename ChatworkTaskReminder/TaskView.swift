@@ -26,13 +26,13 @@ struct TaskView: View {
         }
         .refreshable {
             if keyModel.isRegistered {
-                await taskModel.refresh(using: keyModel.apiKey)
+                await taskModel.refresh()
             }
         }
         .task {
             showAPIKeySheet = !keyModel.isRegistered
             if keyModel.isRegistered {
-                await taskModel.refresh(using: keyModel.apiKey)
+                await taskModel.refresh()
             }
         }
         .onChange(of: keyModel.apiKey) { _ in

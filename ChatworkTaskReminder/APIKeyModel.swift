@@ -17,7 +17,10 @@ final class APIKeyModel: ObservableObject {
 
     private init() {
         load()
+        print("API Key Model initialized. ")
+        print("API Key: \(self.apiKey)")
     }
+    
 
     /// キーの読込（キャッシュに展開）
     @discardableResult

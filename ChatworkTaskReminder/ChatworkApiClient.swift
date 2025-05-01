@@ -10,14 +10,12 @@ import Foundation
 class ChatworkAPIClient {
 
     private let baseURL = URL(string: "https://api.chatwork.com/v2")!
-    private let apiKey: String
     private let urlSession: URLSession
     private let decoder: JSONDecoder
 
     /// Chatwork APIクライアントを初期化します。
     /// - Parameter apiKey: Chatwork APIキー (`X-ChatWorkToken`)
-    public init(apiKey: String, urlSession: URLSession = .shared) {
-        self.apiKey = apiKey
+    public init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
         self.decoder = JSONDecoder()
         // APIレスポンスのキー (snake_case) をSwiftのプロパティ (camelCase) に変換
@@ -35,13 +33,17 @@ class ChatworkAPIClient {
     /// - Returns: タスクの配列
     /// - Throws: ChatworkAPIError
     func getMyTasks() async throws -> [ChatworkTask] {
+        guard let apiKey = APIKeyModel.shared.apiKey else {
+            print("apikey not set. getMyTasks failed.")
+            return []
+        }
         let url = URL(string: "https://api.chatwork.com/v2/my/tasks")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.timeoutInterval = 10
         request.allHTTPHeaderFields = [
           "accept": "application/json",
-          "x-chatworktoken": "38e3989ad77553c8cbca68f6f20e5ff4"
+          "x-chatworktoken": apiKey
         ]
 
         let (data, _) = try await URLSession.shared.data(for: request)
@@ -55,7 +57,10 @@ class ChatworkAPIClient {
     ///   - status: 新しい状態 (open または done)
     /// - Returns: 更新されたタスクID情報 (レスポンスが taskId のみの場合)
     /// - Throws: ChatworkAPIError
-    func updateTaskStatus(roomId: Int, taskId: Int, status: TaskStatus) async throws -> UpdateTaskStatusResponse {
+    func updateTaskStatus(roomId: Int, taskId: Int, status: TaskStatus) async throws -> UpdateTaskStatusResponse? {
+        guard let apiKey = APIKeyModel.shared.apiKey else {
+            return nil
+        }
         let parameters = [
           "body": "done",
         ]

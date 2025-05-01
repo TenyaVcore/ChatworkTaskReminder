@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class ChatworkTaskRemiderUITestsLaunchTests: XCTestCase {
+final class ChatworkTaskReminderUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -53,6 +53,9 @@ struct TaskWidgetEntryView : View {
                 }
             }
         }
+        .containerBackground(for: .widget) {
+            ContainerRelativeShape().foregroundStyle(AnyShapeStyle(.white))
+        }
     }
 }
 
@@ -83,9 +86,8 @@ struct TaskEntry: TimelineEntry {
 }
 
 struct Provider: TimelineProvider {
-    let client = ChatworkAPIClient(
-        apiKey: "38e3989ad77553c8cbca68f6f20e5ff4"
-    )
+    let client = ChatworkAPIClient()
+
     func placeholder(in context: Context) -> TaskEntry {
         TaskEntry(taskList: [])
     }

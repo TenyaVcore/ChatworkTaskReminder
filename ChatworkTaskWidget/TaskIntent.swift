@@ -24,7 +24,7 @@ struct TaskIntent: AppIntent {
     }
 
     func perform() async throws -> some IntentResult {
-        let client = ChatworkAPIClient(apiKey: "38e3989ad77553c8cbca68f6f20e5ff4")
+        let client = ChatworkAPIClient()
         let _ = try? await client.updateTaskStatus(roomId: roomId, taskId: taskId, status: .open)
         return .result()
     }

@@ -8,14 +8,16 @@
 import Foundation
 
 final class KeychainHelper {
-    private static let service = "nobuya.ChatworkTaskRemider"
+    private static let service = "nobuya.ChatworkTaskReminder"
+    private static let group = "P4P28KTQQK.nobuya.ChatworkTaskReminder.WidgetGroup"
 
     func save(data: Data, account: String) -> Bool {
         let query = [
             kSecValueData: data,
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: KeychainHelper.service,
-            kSecAttrAccount: account
+            kSecAttrAccount: account,
+            kSecAttrAccessGroup: KeychainHelper.group
         ] as CFDictionary
 
         let matchingStatus: OSStatus = SecItemCopyMatching(query, nil)
@@ -30,6 +32,7 @@ final class KeychainHelper {
                 [kSecValueData as String: data] as CFDictionary)
             return true
         default:
+            print(matchingStatus.description)
             return false
         }
     }
@@ -39,6 +42,7 @@ final class KeychainHelper {
             kSecAttrService: KeychainHelper.service,
             kSecAttrAccount: account,
             kSecClass: kSecClassGenericPassword,
+            kSecAttrAccessGroup: KeychainHelper.group,
             kSecReturnData: true
         ] as CFDictionary
 
@@ -56,6 +60,7 @@ final class KeychainHelper {
         let query = [
             kSecAttrService: KeychainHelper.service,
             kSecAttrAccount: account,
+            kSecAttrAccessGroup: KeychainHelper.group,
             kSecClass: kSecClassGenericPassword,
         ] as CFDictionary
 

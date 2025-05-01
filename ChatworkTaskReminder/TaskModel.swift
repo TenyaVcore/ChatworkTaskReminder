@@ -31,10 +31,9 @@ final class TaskModel: ObservableObject {
 
     /// API から最新タスクを取得し、キャッシュに保存
     @MainActor
-    func refresh(using apiKey: String?) async {
-        guard let apiKey else { return }
+    func refresh() async {
         do {
-            tasks = try await fetchFromAPI(apiKey: apiKey)
+            tasks = try await fetchFromAPI()
             saveCache()
         } catch {
             print("Task fetch failed:", error)
@@ -50,8 +49,8 @@ final class TaskModel: ObservableObject {
 
     // MARK: Private helpers
 
-    private func fetchFromAPI(apiKey: String) async throws -> [ChatworkTask] {
-        let client = ChatworkAPIClient(apiKey: apiKey)
+    private func fetchFromAPI() async throws -> [ChatworkTask] {
+        let client = ChatworkAPIClient()
         return try await client.getMyTasks()
     }
 

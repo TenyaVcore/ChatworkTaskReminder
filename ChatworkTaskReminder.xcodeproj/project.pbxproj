@@ -51,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BACBBAD92DBF4BD400C34AEF /* ChatworkTaskWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatworkTaskWidgetExtension.entitlements; sourceTree = "<group>"; };
 		BAD078E52DB89E1400B2C1E8 /* ChatworkTaskReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatworkTaskReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD078F52DB89E1800B2C1E8 /* ChatworkTaskReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatworkTaskReminderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatworkTaskReminderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,9 +64,11 @@
 		BACBBA9A2DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				APIKeyModel.swift,
 				ChatworkApi.swift,
 				ChatworkApiClient.swift,
 				ChatworkTask.swift,
+				KeychainHelper.swift,
 			);
 			target = BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */;
 		};
@@ -87,14 +90,14 @@
 			path = ChatworkTaskReminder;
 			sourceTree = "<group>";
 		};
-		BAD078F82DB89E1800B2C1E8 /* ChatworkTaskRemiderTests */ = {
+		BAD078F82DB89E1800B2C1E8 /* ChatworkTaskReminderTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ChatworkTaskRemiderTests;
+			path = ChatworkTaskReminderTests;
 			sourceTree = "<group>";
 		};
-		BAD079022DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests */ = {
+		BAD079022DB89E1800B2C1E8 /* ChatworkTaskReminderUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ChatworkTaskRemiderUITests;
+			path = ChatworkTaskReminderUITests;
 			sourceTree = "<group>";
 		};
 		BAD0791C2DB8B5D900B2C1E8 /* ChatworkTaskWidget */ = {
@@ -144,9 +147,10 @@
 		BAD078DC2DB89E1400B2C1E8 = {
 			isa = PBXGroup;
 			children = (
+				BACBBAD92DBF4BD400C34AEF /* ChatworkTaskWidgetExtension.entitlements */,
 				BAD078E72DB89E1400B2C1E8 /* ChatworkTaskReminder */,
-				BAD078F82DB89E1800B2C1E8 /* ChatworkTaskRemiderTests */,
-				BAD079022DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests */,
+				BAD078F82DB89E1800B2C1E8 /* ChatworkTaskReminderTests */,
+				BAD079022DB89E1800B2C1E8 /* ChatworkTaskReminderUITests */,
 				BAD0791C2DB8B5D900B2C1E8 /* ChatworkTaskWidget */,
 				BAD079172DB8B5D900B2C1E8 /* Frameworks */,
 				BAD078E62DB89E1400B2C1E8 /* Products */,
@@ -214,7 +218,7 @@
 				BAD078F72DB89E1800B2C1E8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				BAD078F82DB89E1800B2C1E8 /* ChatworkTaskRemiderTests */,
+				BAD078F82DB89E1800B2C1E8 /* ChatworkTaskReminderTests */,
 			);
 			name = ChatworkTaskReminderTests;
 			packageProductDependencies = (
@@ -237,7 +241,7 @@
 				BAD079012DB89E1800B2C1E8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				BAD079022DB89E1800B2C1E8 /* ChatworkTaskRemiderUITests */,
+				BAD079022DB89E1800B2C1E8 /* ChatworkTaskReminderUITests */,
 			);
 			name = ChatworkTaskReminderUITests;
 			packageProductDependencies = (
@@ -521,6 +525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChatworkTaskReminder/ChatworkTaskReminder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChatworkTaskReminder/Preview Content\"";
@@ -537,7 +542,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskRemider;
+				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskReminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -550,6 +555,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChatworkTaskReminder/ChatworkTaskReminder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChatworkTaskReminder/Preview Content\"";
@@ -566,7 +572,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskRemider;
+				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskReminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -651,6 +657,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ChatworkTaskWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P4P28KTQQK;
@@ -664,7 +671,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskRemider.ChatworkTaskWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskReminder.ChatworkTaskWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -678,6 +685,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ChatworkTaskWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P4P28KTQQK;
@@ -691,7 +699,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskRemider.ChatworkTaskWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskReminder.ChatworkTaskWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
