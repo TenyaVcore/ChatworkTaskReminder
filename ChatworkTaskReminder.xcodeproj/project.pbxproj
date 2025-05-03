@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BACBBB4A2DC4553600C34AEF /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = BACBBB492DC4553600C34AEF /* KeychainAccess */; };
+		BACBBBEB2DC4C50B00C34AEF /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = BACBBBEA2DC4C50B00C34AEF /* KeychainAccess */; };
 		BAD079192DB8B5D900B2C1E8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD079182DB8B5D900B2C1E8 /* WidgetKit.framework */; };
 		BAD0791B2DB8B5D900B2C1E8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD0791A2DB8B5D900B2C1E8 /* SwiftUI.framework */; };
 		BAD0792C2DB8B5DB00B2C1E8 /* ChatworkTaskWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BAD079162DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -115,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BACBBB4A2DC4553600C34AEF /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +141,7 @@
 			files = (
 				BAD0791B2DB8B5D900B2C1E8 /* SwiftUI.framework in Frameworks */,
 				BAD079192DB8B5D900B2C1E8 /* WidgetKit.framework in Frameworks */,
+				BACBBBEB2DC4C50B00C34AEF /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,13 +151,13 @@
 		BAD078DC2DB89E1400B2C1E8 = {
 			isa = PBXGroup;
 			children = (
-				BACBBAD92DBF4BD400C34AEF /* ChatworkTaskWidgetExtension.entitlements */,
 				BAD078E72DB89E1400B2C1E8 /* ChatworkTaskReminder */,
 				BAD078F82DB89E1800B2C1E8 /* ChatworkTaskReminderTests */,
 				BAD079022DB89E1800B2C1E8 /* ChatworkTaskReminderUITests */,
 				BAD0791C2DB8B5D900B2C1E8 /* ChatworkTaskWidget */,
 				BAD079172DB8B5D900B2C1E8 /* Frameworks */,
 				BAD078E62DB89E1400B2C1E8 /* Products */,
+				BACBBAD92DBF4BD400C34AEF /* ChatworkTaskWidgetExtension.entitlements */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,6 +203,7 @@
 			);
 			name = ChatworkTaskReminder;
 			packageProductDependencies = (
+				BACBBB492DC4553600C34AEF /* KeychainAccess */,
 			);
 			productName = ChatworkTaskRemider;
 			productReference = BAD078E52DB89E1400B2C1E8 /* ChatworkTaskReminder.app */;
@@ -267,6 +272,7 @@
 			);
 			name = ChatworkTaskWidgetExtension;
 			packageProductDependencies = (
+				BACBBBEA2DC4C50B00C34AEF /* KeychainAccess */,
 			);
 			productName = ChatworkTaskWidgetExtension;
 			productReference = BAD079162DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension.appex */;
@@ -307,6 +313,9 @@
 			);
 			mainGroup = BAD078DC2DB89E1400B2C1E8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BACBBB482DC4553600C34AEF /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BAD078E62DB89E1400B2C1E8 /* Products */;
 			projectDirPath = "";
@@ -757,6 +766,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BACBBB482DC4553600C34AEF /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess/";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BACBBB492DC4553600C34AEF /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BACBBB482DC4553600C34AEF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		BACBBBEA2DC4C50B00C34AEF /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BACBBB482DC4553600C34AEF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BAD078DD2DB89E1400B2C1E8 /* Project object */;
 }

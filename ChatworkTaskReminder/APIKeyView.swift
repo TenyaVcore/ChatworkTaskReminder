@@ -35,8 +35,11 @@ struct APIKeyView: View {
             }
 
             Button {
-                if APIKeyModel.shared.save(apiKey) {
+                do {
+                    try APIKeyModel.shared.save(apiKey)
                     dismiss()
+                } catch {
+                    print(error)
                 }
             } label: {
                 Text("保存")

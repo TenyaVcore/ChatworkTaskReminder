@@ -6,65 +6,45 @@
 //
 
 import Foundation
+import KeychainAccess
 
 final class KeychainHelper {
-    private static let service = "nobuya.ChatworkTaskReminder"
-    private static let group = "P4P28KTQQK.nobuya.ChatworkTaskReminder.WidgetGroup"
+    private let service = "nobuya.ChatworkTaskReminder"
+    private let group = "P4P28KTQQK.nobuya.ChatworkTaskReminder.WidgetGroup"
 
-    func save(data: Data, account: String) -> Bool {
-        let query = [
-            kSecValueData: data,
-            kSecClass: kSecClassGenericPassword,
-            kSecAttrService: KeychainHelper.service,
-            kSecAttrAccount: account,
-            kSecAttrAccessGroup: KeychainHelper.group
-        ] as CFDictionary
-
-        let matchingStatus: OSStatus = SecItemCopyMatching(query, nil)
-        switch matchingStatus {
-        case errSecItemNotFound:
-            // 見つからなかったら保存
-            let status = SecItemAdd(query, nil)
-            return status == noErr
-        case errSecSuccess:
-            SecItemUpdate(
-                query,
-                [kSecValueData as String: data] as CFDictionary)
-            return true
-        default:
-            print(matchingStatus.description)
-            return false
-        }
+    func saveApiKey(apiKey: String) throws {
+        let keychain = Keychain(service: service, accessGroup: group)
+        try keychain.set(apiKey, key: "apiKey")
     }
 
-    func read(account: String) -> String? {
-        let query = [
-            kSecAttrService: KeychainHelper.service,
-            kSecAttrAccount: account,
-            kSecClass: kSecClassGenericPassword,
-            kSecAttrAccessGroup: KeychainHelper.group,
-            kSecReturnData: true
-        ] as CFDictionary
-
-        var result: AnyObject?
-        SecItemCopyMatching(query, &result)
-
-        if let data = (result as? Data) {
-            return String(data: data, encoding: .utf8)
-        } else {
-            return nil
-        }
+    func readApiKey() throws -> String {
+        let keychain = Keychain(service: service, accessGroup: group)
+        let apiKey = try keychain.getString("apiKey")
+                if let apiKey {
+                    print("apiKeyの値を取得しました: \(apiKey)")
+                    return apiKey
+                } else {
+                    print("apiKeyに対応する値が見つかりませんでした。")
+                    throw KeychainError.itemNotFound(key: "apiKey")
+                }
     }
 
-    func delete(account: String) -> Bool {
-        let query = [
-            kSecAttrService: KeychainHelper.service,
-            kSecAttrAccount: account,
-            kSecAttrAccessGroup: KeychainHelper.group,
-            kSecClass: kSecClassGenericPassword,
-        ] as CFDictionary
+    func deleteApiKey() throws {
+        let keychain = Keychain(service: service, accessGroup: group)
+        try keychain.remove("apiKey")
+    }
+}
 
-        let status = SecItemDelete(query)
-        return status == noErr
+enum KeychainError: Error, LocalizedError {
+    case itemNotFound(key: String)
+    case unexpectedError(message: String)
+
+    var errorDescription: String? {
+        switch self {
+        case .itemNotFound(let key):
+            return "キー '\(key)' に対応する値が Keychain に見つかりませんでした。"
+        case .unexpectedError(let message):
+            return "予期せぬ Keychain エラーが発生しました: \(message)"
+        }
     }
 }

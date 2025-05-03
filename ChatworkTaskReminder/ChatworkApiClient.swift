@@ -33,8 +33,12 @@ class ChatworkAPIClient {
     /// - Returns: タスクの配列
     /// - Throws: ChatworkAPIError
     func getMyTasks() async throws -> [ChatworkTask] {
+        if APIKeyModel.shared.apiKey == nil {
+            APIKeyModel.shared.load()
+        }
         guard let apiKey = APIKeyModel.shared.apiKey else {
             print("apikey not set. getMyTasks failed.")
+            APIKeyModel.shared.load()
             return []
         }
         let url = URL(string: "https://api.chatwork.com/v2/my/tasks")!

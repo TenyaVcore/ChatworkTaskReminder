@@ -18,34 +18,32 @@ final class APIKeyModel: ObservableObject {
     private init() {
         load()
         print("API Key Model initialized. ")
-        print("API Key: \(self.apiKey)")
+        print("API Key: \(String(describing: self.apiKey))")
     }
     
 
     /// キーの読込（キャッシュに展開）
     @discardableResult
     func load() -> String? {
-        if let key = keychain.read(account: account){
-            apiKey = key
+        do {
+            let apiKey = try keychain.readApiKey()
+        } catch {
+            print(error.localizedDescription)
+            return nil
         }
         return apiKey
     }
 
     /// キーを保存（新規 / 更新）
-    @discardableResult
-    func save(_ key: String) -> Bool {
-        guard let data = key.data(using: .utf8) else { return false }
-        let ok = keychain.save(data: data, account: account)
-        if ok { apiKey = key }
-        return ok
+    func save(_ key: String) throws {
+        try keychain.saveApiKey(apiKey: key)
+        apiKey = key
     }
 
     /// キーを削除
-    @discardableResult
-    func delete() -> Bool {
-        let ok = keychain.delete(account: account)
-        if ok { apiKey = nil }
-        return ok
+    func delete() throws {
+        try keychain.deleteApiKey()
+        apiKey = nil
     }
 
     // true なら既に保存済み
