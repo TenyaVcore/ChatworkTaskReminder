@@ -27,6 +27,7 @@ final class APIKeyModel: ObservableObject {
     func load() -> String? {
         do {
             let apiKey = try keychain.readApiKey()
+            self.apiKey = apiKey
         } catch {
             print(error.localizedDescription)
             return nil
