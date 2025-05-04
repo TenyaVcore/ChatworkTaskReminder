@@ -47,6 +47,8 @@ struct TaskWidgetEntryView : View {
                     Image(systemName: "arrowshape.turn.up.backward.circle.fill")
                 }
             }
+            .frame(width: 15)
+
             VStack {
                 ForEach(entry.taskList.prefix(limit)) { task in
                     TaskWidgetCell(task: task)
@@ -61,24 +63,73 @@ struct TaskWidgetEntryView : View {
 
 struct TaskWidgetCell: View {
     let task: ChatworkTask
-    @State private var isChecked: Bool = false
+
+    private func formatDeadline(time: TimeInterval) -> String {
+        let date = Date(timeIntervalSince1970: time)
+        return date
+            .formatted(
+                Date
+                    .FormatStyle(date: .numeric, time: .omitted)
+                    .year(.twoDigits)
+                    .day()
+            )
+    }
+
+    private func formatDeadlineTime(time: TimeInterval) -> String {
+        let date = Date(timeIntervalSince1970: time)
+        let time = date.formatted(Date.FormatStyle(date: .omitted, time: .shortened))
+        return time
+    }
+
+
+    private func deadlineColor(time: TimeInterval) -> Color {
+        let date = Date(timeIntervalSince1970: time)
+        let now = Date()
+        let calendar = Calendar.current
+
+        if date < now {
+            return .red
+        } else if calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) {
+            return .orange
+        } else {
+            return .secondary
+        }
+    }
+
     var body: some View {
         Button(intent: TaskIntent(taskId: task.taskID, roomId: task.room.roomID)) {
-            HStack {
+            HStack(alignment: .center) {
                 Text(task.body)
-                    .lineLimit(1)
                     .font(.caption)
-                Spacer()
-                Image(systemName: isChecked ? "checkmark.square.fill" : "square")
-                    .resizable()
-                    .frame(width: 24, height: 24)
+                    .lineLimit(2)
+                    .foregroundColor(.primary)
+
+                Spacer() // Pushes the deadline text to the right
+
+                if task.limitType == .date {
+                    VStack {
+                        Text(formatDeadline(time: task.limitTime))
+                            .font(.caption)
+                            .foregroundColor(deadlineColor(time: task.limitTime))
+
+                        Text(formatDeadlineTime(time: task.limitTime))
+                            .font(.caption)
+                            .foregroundColor(deadlineColor(time: task.limitTime))
+                    }
+                }
             }
-            .foregroundColor(.primary)
-            .frame(maxWidth: .infinity)
-            .containerBackground(.fill.tertiary, for: .widget)
         }
     }
 }
+
+
+//#Preview(as: .systemMedium) { // Preview the widget in medium size
+//    ChatworkTaskWidget() // The main widget struct
+//} timeline: {
+//    // Provide sample data for the preview timeline
+//    TaskEntry(date: Date(), taskList: Provider.sampleTasks)
+//    TaskEntry(date: Date().addingTimeInterval(3600), taskList: Provider.sampleTasks.dropFirst()) // Example of a future entry
+//}
 
 struct TaskEntry: TimelineEntry {
     let date: Date = .now
