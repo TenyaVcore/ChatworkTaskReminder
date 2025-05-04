@@ -8,26 +8,46 @@
 import SwiftUI
 
 struct SettingView: View {
-    var body: some View {
-        VStack {
-            HStack {
-                Image(systemName: "gear")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-                Text("user name")
-                    .font(.title)
-            }
+    @StateObject private var apiKeyModel = APIKeyModel.shared
+    @State private var showingConfirmAlert = false
+    @State private var showingResultAlert = false
+    @State private var resultAlertMessage = ""
+    @State private var resultAlertTitle = ""
 
+    var body: some View {
+        NavigationView {
             List {
-                Text("api key変更")
+                Button(role: .destructive) {
+                    showingConfirmAlert = true
+                } label: {
+                    Text("APIKeyを削除")
+                }
+            }
+            .navigationTitle("Settings")
+            .alert("確認", isPresented: $showingConfirmAlert) {
+                Button("削除", role: .destructive) {
+                    do {
+                        try apiKeyModel.delete()
+                        TaskModel.shared.deleteAll()
+                    } catch {
+                        resultAlertTitle = "エラー"
+                        resultAlertMessage = "APIキーの削除に失敗しました"
+                        showingResultAlert = true
+                    }
+                }
+                Button("キャンセル", role: .cancel) {}
+            } message: {
+                Text("APIキーを削除してもよろしいですか？")
             }
         }
-
-
     }
 }
 
-#Preview {
-    SettingView()
+
+struct SettingView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            SettingView()
+        }
+    }
 }

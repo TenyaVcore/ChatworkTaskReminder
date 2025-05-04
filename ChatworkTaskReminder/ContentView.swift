@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject private var keyModel: APIKeyModel = .shared
+    @State private var showAPIKeySheet = false
     var body: some View {
         TabView {
             TaskView()
@@ -20,6 +22,14 @@ struct ContentView: View {
                     Image(systemName: "gear")
                     Text("Setting")
                 }
+        }
+        .onChange(of: keyModel.apiKey) { _ in
+            // API キーが保存されたら自動的に閉じ、削除されたら再表示
+            showAPIKeySheet = !keyModel.isRegistered
+        }
+        .sheet(isPresented: $showAPIKeySheet) {
+            APIKeyView()
+                .interactiveDismissDisabled()
         }
     }
 }

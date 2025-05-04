@@ -29,8 +29,8 @@ final class TaskModel: ObservableObject {
 
     // MARK: -  Public API
 
-    /// API から最新タスクを取得し、キャッシュに保存
     @MainActor
+    /// API から最新タスクを取得し、キャッシュに保存
     func refresh() async {
         do {
             tasks = try await fetchFromAPI()
@@ -40,10 +40,13 @@ final class TaskModel: ObservableObject {
         }
     }
 
-    /// 手動追加など必要に応じて
-    @MainActor
     func add(_ task: ChatworkTask) {
         tasks.append(task)
+        saveCache()
+    }
+
+    func deleteAll() {
+        tasks.removeAll()
         saveCache()
     }
 
