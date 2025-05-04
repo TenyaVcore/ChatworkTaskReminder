@@ -42,8 +42,16 @@ struct TaskCell: View {
     TaskCell(
         task: ChatworkTask(
             taskID: 22,
-            room: Room(roomID: 22,name: "room name",iconPath: URL("https://example.com/icon.png")!),
-            assignedByAccount: Account(accountID: 33, name: "namae", avatarImageURL: URL("https://example.com/icon.png")!),
+            room: Room(
+                roomID: 22,
+                name: "room name",
+                iconPath: URL(filePath: "https://example.com/icon.png")!
+            ),
+            assignedByAccount: Account(
+                accountID: 33,
+                name: "namae",
+                avatarImageURL: URL(filePath: "https://example.com/icon.png")!
+            ),
             messageID: "message",
             body: "body",
             limitTime: 5666,
