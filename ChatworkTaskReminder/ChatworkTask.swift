@@ -64,5 +64,6 @@ enum TaskStatus: String, Codable {
 
 enum LimitType: String, Codable {
     case date
+    case time
     case none
 }

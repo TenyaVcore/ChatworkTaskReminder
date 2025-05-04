@@ -106,7 +106,7 @@ struct TaskWidgetCell: View {
 
                 Spacer() // Pushes the deadline text to the right
 
-                if task.limitType == .date {
+                if task.limitType == .date || task.limitType == .time {
                     VStack {
                         Text(formatDeadline(time: task.limitTime))
                             .font(.caption)
