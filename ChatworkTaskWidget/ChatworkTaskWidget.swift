@@ -102,7 +102,7 @@ struct TaskWidgetCell: View {
                 Text(task.body)
                     .font(.caption)
                     .lineLimit(2)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.black)
 
                 Spacer() // Pushes the deadline text to the right
 
