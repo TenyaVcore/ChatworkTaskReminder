@@ -23,6 +23,10 @@ struct ContentView: View {
                     Text("Setting")
                 }
         }
+        .task {
+            keyModel.load()
+            showAPIKeySheet = !keyModel.isRegistered
+        }
         .onChange(of: keyModel.apiKey) { _ in
             // API キーが保存されたら自動的に閉じ、削除されたら再表示
             showAPIKeySheet = !keyModel.isRegistered
