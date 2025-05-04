@@ -92,7 +92,7 @@ struct TaskWidgetCell: View {
         } else if calendar.isDateInToday(date) || calendar.isDateInTomorrow(date) {
             return .orange
         } else {
-            return .secondary
+            return .black
         }
     }
 
