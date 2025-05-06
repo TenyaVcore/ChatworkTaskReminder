@@ -49,6 +49,12 @@ struct TaskWidgetEntryView : View {
             }
             .frame(width: 15)
 
+            if entry.taskList.isEmpty {
+                Text("タスクがありません")
+                    .font(.title3)
+                    .foregroundStyle(.black)
+                    .padding(30)
+            }
             VStack {
                 ForEach(entry.taskList.prefix(limit)) { task in
                     TaskWidgetCell(task: task)
