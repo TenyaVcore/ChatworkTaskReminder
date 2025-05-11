@@ -14,7 +14,12 @@ struct TaskView: View {
     var body: some View {
         NavigationView {
             List(taskModel.tasks) { task in
-                TaskCell(task: task)
+                NavigationLink {
+                    TaskDetailView(task: task)
+                } label: {
+                    TaskCell(task: task)
+                }
+
             }
             .navigationTitle("Task一覧")
             .overlay {
