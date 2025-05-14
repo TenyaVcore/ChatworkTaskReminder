@@ -91,4 +91,34 @@ class ChatworkAPIClient {
             throw ChatworkAPIError.unknownError
         }
     }
+
+    /// 現在のユーザー情報を取得します。
+    /// - Returns: ユーザー情報
+    /// - Throws: ChatworkAPIError
+    func getUserInfo() async throws -> ChatworkUser {
+        if APIKeyModel.shared.apiKey == nil {
+            APIKeyModel.shared.load()
+        }
+        guard let apiKey = APIKeyModel.shared.apiKey else {
+            throw ChatworkAPIError.invalidApiKey
+        }
+
+        let url = baseURL.appendingPathComponent("/me")
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.timeoutInterval = 10
+        request.allHTTPHeaderFields = [
+            "accept": "application/json",
+            "x-chatworktoken": apiKey
+        ]
+
+        let (data, response) = try await urlSession.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+            throw ChatworkAPIError.requestFailed
+        }
+
+        return try decoder.decode(ChatworkUser.self, from: data)
+    }
 }
