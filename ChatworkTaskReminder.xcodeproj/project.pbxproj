@@ -63,17 +63,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BACBBA9A2DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskWidgetExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				APIKeyModel.swift,
-				ChatworkApi.swift,
-				ChatworkApiClient.swift,
-				ChatworkTask.swift,
-				KeychainHelper.swift,
-			);
-			target = BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */;
-		};
 		BAD0792D2DB8B5DB00B2C1E8 /* Exceptions for "ChatworkTaskWidget" folder in "ChatworkTaskWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -86,9 +75,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BAD078E72DB89E1400B2C1E8 /* ChatworkTaskReminder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				BACBBA9A2DBDE77500C34AEF /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskWidgetExtension" target */,
-			);
 			path = ChatworkTaskReminder;
 			sourceTree = "<group>";
 		};
