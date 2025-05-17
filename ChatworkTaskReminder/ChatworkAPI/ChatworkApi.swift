@@ -23,7 +23,9 @@ struct ChatworkAPIErrorResponse: Codable, Error {
 
 // MARK: - APIクライアント用エラー定義
 enum ChatworkAPIError: Error, LocalizedError {
+    case invalidApiKey
     case invalidURL
+    case requestFailed
     case networkError(Error)
     case apiError(ChatworkAPIErrorResponse)
     case decodingError(Error)
@@ -32,8 +34,12 @@ enum ChatworkAPIError: Error, LocalizedError {
 
     var errorDescription: String? {
         switch self {
+        case .invalidApiKey:
+            return "無効なAPIキーです"
         case .invalidURL:
-            return "無効なURLです。"
+            return "無効なURLです"
+        case .requestFailed:
+            return "リクエストに失敗しました"
         case .networkError(let error):
             return "ネットワークエラー: \(error.localizedDescription)"
         case .apiError(let response):

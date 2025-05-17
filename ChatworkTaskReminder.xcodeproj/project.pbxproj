@@ -70,11 +70,26 @@
 			);
 			target = BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */;
 		};
+		BAEA089A2DD8AD490035AEE5 /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ChatworkAPI/APIKeyModel.swift,
+				ChatworkAPI/ChatworkApi.swift,
+				ChatworkAPI/ChatworkApiClient.swift,
+				Entity/ChatworkTask.swift,
+				Entity/ChatworkUser.swift,
+				Helper/KeychainHelper.swift,
+			);
+			target = BAD079152DB8B5D900B2C1E8 /* ChatworkTaskWidgetExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BAD078E72DB89E1400B2C1E8 /* ChatworkTaskReminder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BAEA089A2DD8AD490035AEE5 /* Exceptions for "ChatworkTaskReminder" folder in "ChatworkTaskWidgetExtension" target */,
+			);
 			path = ChatworkTaskReminder;
 			sourceTree = "<group>";
 		};
