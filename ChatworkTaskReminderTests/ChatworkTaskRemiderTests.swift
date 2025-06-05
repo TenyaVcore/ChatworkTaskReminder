@@ -6,7 +6,7 @@
 //
 
 import Testing
-@testable import ChatworkTaskRemider
+@testable import ChatworkTaskReminder
 
 struct ChatworkTaskRemiderTests {
 
