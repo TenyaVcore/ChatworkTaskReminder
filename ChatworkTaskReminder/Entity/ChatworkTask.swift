@@ -1,6 +1,6 @@
 //
 //  Task.swift
-//  ChatworkTaskRemider
+//  ChatworkTaskReminder
 //
 //  Created by Tagawa Nobuya on 2025/04/27.
 //
