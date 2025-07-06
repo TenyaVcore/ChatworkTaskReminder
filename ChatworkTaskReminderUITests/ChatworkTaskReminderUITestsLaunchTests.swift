@@ -1,6 +1,6 @@
 //
-//  ChatworkTaskRemiderUITestsLaunchTests.swift
-//  ChatworkTaskRemiderUITests
+//  ChatworkTaskReminderUITestsLaunchTests.swift
+//  ChatworkTaskReminderUITests
 //
 //  Created by Tagawa Nobuya on 2025/04/23.
 //

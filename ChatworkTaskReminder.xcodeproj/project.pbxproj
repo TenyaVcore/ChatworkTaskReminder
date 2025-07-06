@@ -20,14 +20,14 @@
 			containerPortal = BAD078DD2DB89E1400B2C1E8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BAD078E42DB89E1400B2C1E8;
-			remoteInfo = ChatworkTaskRemider;
+			remoteInfo = ChatworkTaskReminder;
 		};
 		BAD079002DB89E1800B2C1E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BAD078DD2DB89E1400B2C1E8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BAD078E42DB89E1400B2C1E8;
-			remoteInfo = ChatworkTaskRemider;
+			remoteInfo = ChatworkTaskReminder;
 		};
 		BAD0792A2DB8B5DB00B2C1E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -206,7 +206,7 @@
 			packageProductDependencies = (
 				BACBBB492DC4553600C34AEF /* KeychainAccess */,
 			);
-			productName = ChatworkTaskRemider;
+			productName = ChatworkTaskReminder;
 			productReference = BAD078E52DB89E1400B2C1E8 /* ChatworkTaskReminder.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -229,7 +229,7 @@
 			name = ChatworkTaskReminderTests;
 			packageProductDependencies = (
 			);
-			productName = ChatworkTaskRemiderTests;
+			productName = ChatworkTaskReminderTests;
 			productReference = BAD078F52DB89E1800B2C1E8 /* ChatworkTaskReminderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -252,7 +252,7 @@
 			name = ChatworkTaskReminderUITests;
 			packageProductDependencies = (
 			);
-			productName = ChatworkTaskRemiderUITests;
+			productName = ChatworkTaskReminderUITests;
 			productReference = BAD078FF2DB89E1800B2C1E8 /* ChatworkTaskReminderUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -602,7 +602,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskRemiderTests;
+				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskReminderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -621,7 +621,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskRemiderTests;
+				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskReminderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -639,12 +639,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskRemiderUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskReminderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ChatworkTaskRemider;
+				TEST_TARGET_NAME = ChatworkTaskReminder;
 			};
 			name = Debug;
 		};
@@ -657,12 +657,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskRemiderUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = nobuya.ChatworkTaskReminderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ChatworkTaskRemider;
+				TEST_TARGET_NAME = ChatworkTaskReminder;
 			};
 			name = Release;
 		};
