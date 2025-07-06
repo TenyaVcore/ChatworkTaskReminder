@@ -12,6 +12,8 @@ final class TaskModel: ObservableObject {
     static let shared = TaskModel()
 
     @Published private(set) var tasks: [ChatworkTask] = []
+    @Published private(set) var error: Error?
+    @Published private(set) var isLoading = false
 
     private let cacheURL: URL
     private let decoder = JSONDecoder()
@@ -32,12 +34,18 @@ final class TaskModel: ObservableObject {
     @MainActor
     /// API から最新タスクを取得し、キャッシュに保存
     func refresh() async {
+        isLoading = true
+        error = nil
+        
         do {
             tasks = try await fetchFromAPI()
             saveCache()
         } catch {
             print("Task fetch failed:", error)
+            self.error = error
         }
+        
+        isLoading = false
     }
 
     func add(_ task: ChatworkTask) {
@@ -48,6 +56,10 @@ final class TaskModel: ObservableObject {
     func deleteAll() {
         tasks.removeAll()
         saveCache()
+    }
+    
+    func clearError() {
+        error = nil
     }
 
     // MARK: Private helpers

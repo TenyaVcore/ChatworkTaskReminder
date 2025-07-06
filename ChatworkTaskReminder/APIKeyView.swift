@@ -11,6 +11,8 @@ struct APIKeyView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) var openURL
     @State private var apiKey: String = ""
+    @State private var errorMessage: String?
+    @State private var showingErrorAlert = false
 
     var body: some View {
         VStack(spacing: 24) {
@@ -36,16 +38,19 @@ struct APIKeyView: View {
 
             Button {
                 do {
-                    try APIKeyModel.shared.save(apiKey)
+                    try APIKeyModel.shared.save(apiKey.trimmingCharacters(in: .whitespacesAndNewlines))
                     dismiss()
                 } catch {
                     print(error)
+                    errorMessage = error.localizedDescription
+                    showingErrorAlert = true
                 }
             } label: {
                 Text("保存")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
+            .disabled(apiKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
         }
         .padding()
         .background(
@@ -63,6 +68,13 @@ struct APIKeyView: View {
                         .font(.title3)
                         .padding(10)
                 }
+        .alert("エラー", isPresented: $showingErrorAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            if let errorMessage = errorMessage {
+                Text(errorMessage)
+            }
+        }
     }
 }
 
